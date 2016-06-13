@@ -2,12 +2,11 @@ var mongodb = require('mongodb');
 var express = require('express');
 var valid_url = require('valid-url');
 var brokenLink = require('broken-link');
-var env = require('node-env-file');
 var MSON = require('mongoson');
 var EJSON = require('mongodb-extended-json');
 var jsonQuery = require('json-query')
 
-env(__dirname + "/.env");
+require('dotenv').config();
 
 var app = express();
 var MongoClient = mongodb.MongoClient;

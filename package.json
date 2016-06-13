@@ -11,13 +11,14 @@
   "dependencies": {
     "async": "~0.2.8",
     "broken-link": "^1.0.1",
+    "bson": "^0.4.23",
+    "dotenv": "^2.0.0",
     "ejs": "^2.4.2",
     "express": "~3.2.4",
     "json-query": "^2.1.0",
     "mongodb": "^2.1.18",
     "mongodb-extended-json": "^1.6.3",
     "mongoson": "^0.2.0",
-    "node-env-file": "^0.1.8",
     "socket.io": "~0.9.14",
     "valid-url": "^1.0.9"
   },
