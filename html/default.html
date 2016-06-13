@@ -20,21 +20,25 @@
             <h3>Output:</h3>
             <code>
                 {
-                    "original_url": https://google.com, 
-                    "shortened_url": http://fcc-bec-url-shortener-ms-morettit.c9users.io/575ac9febf11874613e94771
+                    "original_url": "https://google.com", 
+                    "shortened_url": "http://fcc-bec-url-shortener-ms.herokuapp.com/575ac9febf11874613e94771"
                 }
             </code>
             <h3>Example usage - Short Url Creation with Broken Link:</h3>
             <code>https://fcc-bec-url-shortener-ms.herokuapp.com/new/https://google.com/aaa</code><br>
             <h3>Output:</h3>
             <code>
-                {"error": Link is broken.}
+                { 
+                    "error": "Link is broken."
+                }
             </code>
             <h3>Example usage - Short Url Creation with NOT URL element:</h3>
             <code>https://fcc-bec-url-shortener-ms.herokuapp.com/new/thisisasimplestring</code><br>
             <h3>Output:</h3>
             <code>
-                {"error": Wrong url format.}
+                { 
+                    "error": "Wrong url format." 
+                    }
             </code>
             <h3>Example usage - Retrieve URL:</h3>
             <code>https://fcc-bec-url-shortener-ms.herokuapp.com/575e8ef4ca49f4e81014c30d</code><br>

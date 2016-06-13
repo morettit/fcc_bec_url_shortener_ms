@@ -89,8 +89,8 @@ app.get('/new/:url*', function(req,res) {
                         JSON.parse(result, function(key, value) {
                           if (key === '_id') {
                             json = "{" +
-                                  "\"original_url\": " + url + ", " +
-                                  "\"shortened_url\": " + req.protocol + "://" + req.get('host') + "/" + value +
+                                  "\"original_url\": \"" + url + "\", " +
+                                  "\"shortened_url\": \"" + req.protocol + "://" + req.get('host') + "/" + value + "\"" +
                                   "}";
                             res.writeHead(200, { 'Content-Type': 'application/json' });
                             res.end(json);
@@ -113,8 +113,8 @@ app.get('/new/:url*', function(req,res) {
                             console.log(jsonQuery('ops._id',{data:result}).value);
                             var id = jsonQuery('ops._id',{data:result}).value;
                             json = "{" +
-                                   "\"original_url\": " + url + ", " +
-                                   "\"shortened_url\": " + req.protocol + "://" + req.get('host') + "/" + id +
+                                   "\"original_url\": \"" + url + "\", " +
+                                   "\"shortened_url\": \"" + req.protocol + "://" + req.get('host') + "/" + id + "\"" +
                                    "}";
                             console.log(json);
                             res.writeHead(200, { 'Content-Type': 'application/json' });
