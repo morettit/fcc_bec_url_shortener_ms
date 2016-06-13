@@ -7,21 +7,40 @@
     <body>
         <div class="container">
             <h1 class="header">
-               FreeCodeCamp API Basejump: Request Header Parser Microservice
+               FreeCodeCamp API Basejump: Url Shortener Microservice
             </h1>
             <blockquote>
                 User stories:
-                <ul>1) I can get the IP address, language and operating system for my browser.</ul>
+                <ul>1) I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</ul>
+                <ul>2) If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.</ul>
+                <ul>3) When I visit that shortened URL, it will redirect me to my original link.</ul>
             </blockquote>
-            <h3>Example usage:</h3>
-            <code>https://fcc-bec-whoami.herokuapp.com/api/whoami</code><br>
-            <h3>Example output:</h3>
+            <h3>Example usage - Short Url Creation:</h3>
+            <code>https://fcc-bec-url-shortener-ms.herokuapp.com/new/https://google.com</code><br>
+            <h3>Example output - Short Url Creation:</h3>
             <code>
                 {
-                    "ipaddress":"89.31.48.28",
-                    "language":"it-IT",
-                    "os":"Windows NT 6.1; WOW64"
+                    "original_url": https://google.com, 
+                    "shortened_url": http://fcc-bec-url-shortener-ms-morettit.c9users.io/575ac9febf11874613e94771
                 }
+            </code>
+            <h3>Example usage - Short Url Creation with Broken Link:</h3>
+            <code>https://fcc-bec-url-shortener-ms.herokuapp.com/new/https://google.com/aaa</code><br>
+            <h3>Example output - Short Url Creation:</h3>
+            <code>
+                {"error": Link is broken.}
+            </code>
+            <h3>Example usage - Short Url Creation with NOT URL element:</h3>
+            <code>https://fcc-bec-url-shortener-ms.herokuapp.com/new/thisisasimplestring</code><br>
+            <h3>Example output - Short Url Creation with NOT URL element:</h3>
+            <code>
+                {"error": Wrong url format.}
+            </code>
+            <h3>Example usage - Retrieve URL:</h3>
+            <code>http://fcc-bec-url-shortener-ms-morettit.c9users.io/575e8ef4ca49f4e81014c30d</code><br>
+            <h3>Example output - Retrieve URL:</h3>
+            <code>
+                Redirect to : http://www.twitter.com
             </code>
             <h5 align='right'>
                 </br></br></br>
