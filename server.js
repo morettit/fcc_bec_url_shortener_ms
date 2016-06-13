@@ -4,6 +4,8 @@ var valid_url = require('valid-url');
 var brokenLink = require('broken-link');
 var env = require('node-env-file');
 var MSON = require('mongoson');
+var EJSON = require('mongodb-extended-json');
+var jsonQuery = require('json-query')
 
 env(__dirname + "/.env");
 
@@ -109,23 +111,16 @@ app.get('/new/:url*', function(req,res) {
                           }
                           else {
                             console.log(result);
-                            JSON.parse(result, function(key, value) {
-                              if ( key === 'ops') {
-                                console.log(value);
-                                value = MSON.stringify(result).replace("ObjectId(","").replace(")","");
-                                JSON.parse(value, function(k, val) {
-                                  if (k === '_id') {
-                                    json = "{" +
-                                           "\"original_url\": " + url + ", " +
-                                           "\"shortened_url\": " + req.protocol + "://" + req.get('host') + "/" + val +
-                                           "}";
-                                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                                    res.end(json);
-                                    db.close();
-                                  }
-                                });
-                              } 
-                            });
+                            console.log(jsonQuery('ops._id',{data:result}).value);
+                            var id = jsonQuery('ops._id',{data:result}).value;
+                            json = "{" +
+                                   "\"original_url\": " + url + ", " +
+                                   "\"shortened_url\": " + req.protocol + "://" + req.get('host') + "/" + id +
+                                   "}";
+                            console.log(json);
+                            res.writeHead(200, { 'Content-Type': 'application/json' });
+                            res.end(json);
+                            db.close();
                           }
                         });
                       }
